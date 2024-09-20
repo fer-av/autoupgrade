@@ -777,6 +777,8 @@ $(document).ready(function () {
       var params = {};
       var $newChannel = $("select[name=channel] option:selected").val();
       var $oldChannel = $("select[name=channel] option.current").val();
+      // ERROR: Uncaught ReferenceError: versionNumberRegex is not defined
+      var versionNumberRegex = /^\d+(.\d+){2,3}$/;
 
       $oldChannel = "";
 
@@ -834,6 +836,9 @@ $(document).ready(function () {
             "select[name=directory_prestashop] option:selected",
           ).val();
           let directory_num = $("input[name=directory_num]").val();
+          // ERROR: Uncaught ReferenceError: versionNumberRegex is not defined.
+          // "versionNumberRegex" no estaba definida, por lo tanto no funcina la 
+          // actualizacion Modo Experto -> Canal: Directorio Local, la volvi a definir mas arriba
           if (directory_num == "" || !directory_num.match(versionNumberRegex)) {
             showConfigResult(
               input.translation.needToEnterDirectoryVersionNumber,
